@@ -7,47 +7,60 @@
  * Description: The deciToBinConV function converts unsigned decimal integers
  * numbers to binary and then prints the output to the console. Whenever a
  * number different from an unsigned decimal integer is supplied, it rejects it
- * with a feedback rejection output to the console.
+ * with a feedback rejection output to the console. Here the stdlib.h standard
+ * libray function 'malloc' was used to dynamically allocate contiguous single
+ * block of requested memory to the pointer variable ('result', of type char).
+ * Thereafter, just prior to the end of the deciToBinConv function's execution
+ * or run time, the pointer variable's memory was freed from the heap memory
+ * data segment using the 'free' standard stdlib.h library function.
  *
- * NB: At line 28, being an int data-type, the 'num' variable can only be
+ * NB: At line 42, being a 'long int' data-type, the 'num' variable can only be
  * assigned integers after the division leaving out the remainders if any.
  */
 void deciToBinConv(void)
 {
-	short int num, result[64], counter = 0, i;
+	char i, *result;
+	long int num, counter = 0;
 
 	printf("\nPlease, enter a positive decimal integer: ");
-	scanf("%hd", &num);
+	scanf("%ld", &num);
 
-	if (num >= 0)
+	result = (char *)malloc(64 * sizeof(char));
+
+	if (result == NULL)
 	{
-		while (num > 1)
-		{
-			result[counter] = num % 2;
-
-			counter++;
-
-			num /= 2;
-		}
-
-		counter--;
-
-		printf("\nHere is the binary conversion of the decimal integer supplied: ");
-
-		printf("%hd", num);
-
-		for (i = 0; counter >= i; counter--)
-		{
-			printf("%3hd", result[counter]);
-		}
-
-		printf("\n\n");
+		puts("Sorry, memory was not successfully allocated"\n);
 	}
 	else
 	{
-		printf("\nYou can only input positive decimal integers.\n\n");
+		if (num >= 0)
+		{
+			while (num > 1)
+			{
+				result[counter] = num % 2;
+				counter++;
+				num /= 2;
+			}
 
-		printf("Please, try again.\n");
+			counter--;
+			printf("\nHere is the binary conversion of the decimal integer supplied: ");
+			printf("%ld", num);
+
+			for (i = 0; counter >= i; counter--)
+			{
+				printf("%3d", result[counter]);
+			}
+
+			printf("\n\n");
+		}
+		else
+		{
+			printf("\nYou can only input positive decimal integers.\n\n");
+			printf("Please, try again.\n");
+		}
+
+		free(result);
+		result = NULL;
 	}
 }
 
