@@ -8,8 +8,8 @@
  * numbers to binary and then prints the output to the console. Whenever a
  * number different from an unsigned decimal integer is supplied, it rejects it
  * with a feedback rejection output to the console. Here the stdlib.h standard
- * libray function 'malloc' was used to dynamically allocate contiguous single
- * block of requested memory to the pointer variable ('result', of type char).
+ * libray function 'calloc' was used to dynamically allocate contiguous multiple
+ * blocks of requested memory to the pointer variable ('result', of type char).
  * Thereafter, just prior to the end of the deciToBinConv function's execution
  * or run time, the pointer variable's memory was freed from the heap memory
  * data segment using the 'free' standard stdlib.h library function.
@@ -25,11 +25,11 @@ void deciToBinConv(void)
 	printf("\nPlease, enter a positive decimal integer: ");
 	scanf("%ld", &num);
 
-	result = (char *)malloc(64 * sizeof(char));
+	result = (char *)calloc(64, sizeof(char));
 
 	if (result == NULL)
 	{
-		puts("Sorry, memory was not successfully allocated"\n);
+		puts("Sorry, memory was not successfully allocated");
 	}
 	else
 	{
