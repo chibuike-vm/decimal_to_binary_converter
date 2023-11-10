@@ -1,7 +1,6 @@
 # Binary Converter
 
-This project was built using the _C Programming Language_ and was specifically  
-designed to convert positive decimal integers to their respective binary digits.
+This project was built using the _C Programming Language_ and was specifically designed to convert positive decimal integers to their respective binary digits.
 
 ## Prefered Compilers
 
@@ -23,8 +22,6 @@ To learn more about the source codes;
 
 >### Note
 >
-This program was designed to **only** convert positive decimal integers to their  
-respective binary digits hence **won't accept negative decimal integers** as  
-inputs.  
+>This program was designed to **only** convert positive decimal integers to their respective binary digits hence **won't accept negative decimal integers** as inputs.  
 
 Also, the Betty coding style for C code (adopted in Holberton School) was used.  
